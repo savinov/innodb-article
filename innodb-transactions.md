@@ -7,6 +7,7 @@ InnoDB следует принципам [ACID](http://dev.mysql.com/doc/refman/
 Изоляция транзакций в InnoDB реализована в соответсвии со стандартом [SQL-92](http://www.contrib.andrew.cmu.edu/~shadow/sql/sql1992.txt) в виде четырех уровней: *READ UNCOMMITTED*, *READ COMMITTED*, *REPEATABLE READ*, *SERIALIZABLE*. По-умолчанию используется *REPEATABLE READ*. Пользователь может изменить уровень изоляции для текущей сессии или для всех новых сессий с помощью выражения [`SET TRANSACTION`](http://dev.mysql.com/doc/refman/5.6/en/set-transaction.html). Перед тем как рассмотреть что из себя представляют эти уровни изоляции, стоит кратко рассмотреть виды чтения и варианты блокировок на уровне строк.
 
 Чтение бывает двух типов: консистентное неблокирующее ([Consistent Nonlocking Reads](http://dev.mysql.com/doc/refman/5.6/en/innodb-consistent-read.html) - обычные `SELECT`) и блокирущее ([Locking Reads](http://dev.mysql.com/doc/refman/5.6/en/innodb-locking-reads.html) - `SELECT ... FOR UPDATE` и `SELECT ... LOCK IN SHARE MODE`).
+
 InnoDB в разных ситуациях применят один из трех вариантов блокировки на уровне строк:
 
 1. record lock
