@@ -16,6 +16,6 @@ InnoDB следует принципам [ACID](http://dev.mysql.com/doc/refman/
 
 Существует три типа блокировок:
 
-1. блокировка индексной записи ([record lock](http://dev.mysql.com/doc/refman/5.7/en/glossary.html#glos_record_lock)) - такая блокировка происходит, если в запросе указано уникальное ограничение на уникальный индекс ([unique index](http://dev.mysql.com/doc/refman/5.7/en/glossary.html#glos_unique_index)); например, если в таблице `t` поле `c1` является уникальным индексом, то при выполнении блокирующего чтения `SELECT c1 FOR UPDATE FROM t WHERE c1 = 10;` InnoDB не допустит чтобы другая транзакция вставила, обновила или удалила строки с полем `с1 = 10`
+1. блокировка индексной записи ([record lock](http://dev.mysql.com/doc/refman/5.7/en/glossary.html#glos_record_lock)) - такая блокировка происходит, если условие запроса ограничивает только одну запись уникального индекса ([unique index](http://dev.mysql.com/doc/refman/5.7/en/glossary.html#glos_unique_index)); например, если в таблице `t` поле `c1` является уникальным индексом, то при выполнении блокирующего чтения `SELECT c1 FOR UPDATE FROM t WHERE c1 = 10;` InnoDB не допустит чтобы другая транзакция вставила, обновила или удалила строки с полем `с1 = 10`; такая блокировка может происходить и в случае если в таблице не объявленны уникальные индексы; в таких случаях InnoDB создаст скрытый ключ в виде номера строки ([Clustered and Secondary Indexes](http://dev.mysql.com/doc/refman/5.7/en/innodb-table-and-index.html#innodb-index-types))
 2. gap lock
 3. next-ket lock
