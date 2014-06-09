@@ -20,14 +20,11 @@ InnoDB реализует блокировки строк в двух режим
 Предположим, что есть таблица `t` с двумя полями `i` и `j` и несколькими строками:
 
 ```
-mysql> CREATE TABLE t (i int, j int);
-Query OK, 0 rows affected (0.06 sec)
-mysql> INSERT INTO t VALUES (1, 1);
-Query OK, 1 row affected (0.00 sec)
-mysql> INSERT INTO t VALUES (2, 2);
-Query OK, 1 row affected (0.00 sec)
-mysql> INSERT INTO t VALUES (3, 3);
-Query OK, 1 row affected (0.00 sec)
+mysql> 
+CREATE TABLE t (i int, j int);
+INSERT INTO t VALUES (1, 1);
+INSERT INTO t VALUES (2, 2);
+INSERT INTO t VALUES (3, 3);
 ```
 
 Предположим есть два клиента А и В. Клиент А в своей транзакции получает блокировку чтения на строку с `i = 2`.
