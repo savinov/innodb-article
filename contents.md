@@ -1,5 +1,5 @@
-0. introduction.md
-1. transactions.md
-2. locks.md
-3. locking-modes.md
-4. deadlocks.md
+1. introduction.md
+2. transactions.md
+3. locks.md
+4. locking-modes.md
+5. deadlocks.md
